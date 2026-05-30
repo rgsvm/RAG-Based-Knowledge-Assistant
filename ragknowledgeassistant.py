@@ -1,12 +1,14 @@
 import streamlit as st
 from PyPDF2 import PdfReader
-import openai
-openai.api_key = "your_key"
-
 import os
 from openai import OpenAI
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is not set in environment variables")
+
+client = OpenAI(api_key=api_key)
 
 def extract_text_from_pdf(pdf_file):
     reader = PdfReader(pdf_file)
