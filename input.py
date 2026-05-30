@@ -14,10 +14,7 @@ def extract_text_from_pdf(pdf_file):
 
 st.title("RAG Knowledge Assistant")
 
-uploaded_file = st.file_uploader(
-    "Upload PDF",
-    type=["pdf"]
-)
+uploaded_file = st.file_uploader("Upload PDF", type=["pdf"])
 
 if uploaded_file is not None:
     text = extract_text_from_pdf(uploaded_file)
